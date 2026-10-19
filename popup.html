@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <title>Liste farm da GetterTools</title>
+  <style>
+    body { font: 13px/1.4 system-ui, sans-serif; width: 340px; margin: 0; padding: 12px; color: #1f2933; }
+    h1 { font-size: 15px; margin: 0 0 8px; }
+    h2 { font-size: 13px; margin: 14px 0 6px; border-bottom: 1px solid #d9e2ec; padding-bottom: 3px; }
+    label { display: block; margin: 6px 0; }
+    input[type="number"], input[type="text"], select { width: 100%; box-sizing: border-box; padding: 4px; margin-top: 2px; }
+    input[type="checkbox"] { margin-right: 6px; }
+    .troops { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+    .troops label { margin: 0; font-size: 12px; }
+    .troops input { width: 100%; box-sizing: border-box; padding: 3px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .info { color: #52606d; font-size: 12px; margin: 3px 0; }
+    button { margin-top: 12px; width: 100%; padding: 8px; cursor: pointer; background: #2f855a; color: #fff; border: 0; border-radius: 4px; font: inherit; }
+    .msg { margin-top: 8px; font-size: 12px; min-height: 16px; }
+    .ok { color: #2f855a; }
+    .err { color: #c53030; }
+  </style>
+</head>
+<body>
+  <h1>Liste farm da GetterTools</h1>
+
+  <div class="info" id="savedInfo"></div>
+  <div class="info" id="detectedInfo"></div>
+
+  <h2>Destinazione</h2>
+  <label>Villaggio di destinazione
+    <select id="target"></select>
+  </label>
+  <label>Prefisso nome liste
+    <input type="text" id="prefix" maxlength="40">
+  </label>
+
+  <h2>Liste</h2>
+  <div class="row">
+    <label>Capacità per lista
+      <input type="number" id="capacity" min="1" max="100" step="1">
+    </label>
+    <label>Max villaggi (0 = tutti)
+      <input type="number" id="maxVillages" min="0" max="500" step="1">
+    </label>
+  </div>
+  <label><input type="checkbox" id="onlyLosses">Solo perdite (onlyLosses)</label>
+  <label><input type="checkbox" id="useShip">Usa nave (useShip)</label>
+
+  <h2>Truppe di default</h2>
+  <div class="troops" id="troops"></div>
+
+  <h2>Ritmo</h2>
+  <div class="row">
+    <label>Pausa minima (ms)
+      <input type="number" id="minDelayMs" min="0" max="60000" step="1">
+    </label>
+    <label>Pausa massima (ms)
+      <input type="number" id="maxDelayMs" min="0" max="60000" step="1">
+    </label>
+  </div>
+  <label>Obiettivi per richiesta (batch)
+    <input type="number" id="batchSize" min="1" max="100" step="1">
+  </label>
+  <label><input type="checkbox" id="dryRun">Dry-run (simula, nessuna chiamata API)</label>
+
+  <button id="save">Salva impostazioni</button>
+  <div class="msg" id="msg"></div>
+
+  <script src="shared.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

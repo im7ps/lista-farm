@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Travian - Liste farm da GetterTools",
+  "version": "1.0.0",
+  "description": "Importa i villaggi inattivi da GetterTools nelle liste farm di Travian (100 obiettivi per lista).",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://www.gettertools.com/*",
+    "https://*.travian.com/*"
+  ],
+  "action": {
+    "default_title": "Liste farm da GetterTools",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.gettertools.com/*"],
+      "js": ["shared.js", "gettertools.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://*.travian.com/*"],
+      "js": ["shared.js", "travian.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
